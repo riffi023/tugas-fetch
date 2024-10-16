@@ -30,6 +30,12 @@ document.addEventListener('DOMContentLoaded', () => {
               <td>${user.email}</td>
           `;
           tableBody.appendChild(row);
+
+          // Add click event listener to each row
+          row.addEventListener('click', () => {
+              displayUserDetails(user);
+              fetchUserPosts(user.id);
+          });
       });
   }
 
@@ -54,7 +60,6 @@ document.addEventListener('DOMContentLoaded', () => {
       fetch(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
           .then(response => response.json())
           .then(posts => {
-              console.log('Posts fetched for user ID:', userId, posts); // Debugging line
               displayPosts(posts);
               loader.style.display = 'none'; // Hide loader
           })
@@ -69,32 +74,27 @@ document.addEventListener('DOMContentLoaded', () => {
       const detailBody = document.querySelector('#detail-body');
       detailBody.innerHTML = ''; // Clear previous details
 
-      // Fill in user details
       const details = [
-        { label: 'ID', value: user.id },
-        { label: 'Nama', value: user.name },
-        { label: 'Email', value: user.email },
-        { label: 'Username', value: user.username },
-        { label: 'Website', value: user.website },
-        { label: 'Telepon', value: user.phone },
-        { label: 'Alamat', value: `${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}` },
-        { label: 'Perusahaan', value: user.company.name },
-        { label: 'Slogan Perusahaan', value: user.company.catchPhrase },
-        { label: 'Strategi Bisnis', value: user.company.bs },
-        { label: 'Tanggal Lahir', value: user.birthday || 'Tidak tersedia' },
-        { label: 'Jenis Kelamin', value: user.gender || 'Tidak tersedia' },
-        { label: 'LinkedIn', value: user.socialMedia?.linkedin || 'Tidak tersedia' },
-        { label: 'Twitter', value: user.socialMedia?.twitter || 'Tidak tersedia' },
-        { label: 'Deskripsi', value: user.bio || 'Tidak tersedia' },
-        { label: 'Negara', value: user.address.country || 'Tidak tersedia' }, // Country
-        { label: 'Provinsi', value: user.address.state || 'Tidak tersedia' }, // State
-        { label: 'Latitude', value: user.address.geo?.lat || 'Tidak tersedia' }, // Latitude
-        { label: 'Longitude', value: user.address.geo?.lng || 'Tidak tersedia' }  // Longitude
-    ];
-    
-    
-    
-    
+          { label: 'ID', value: user.id },
+          { label: 'Nama', value: user.name },
+          { label: 'Email', value: user.email },
+          { label: 'Username', value: user.username },
+          { label: 'Website', value: user.website },
+          { label: 'Telepon', value: user.phone },
+          { label: 'Alamat', value: `${user.address.street}, ${user.address.suite}, ${user.address.city}, ${user.address.zipcode}` },
+          { label: 'Perusahaan', value: user.company.name },
+          { label: 'Slogan Perusahaan', value: user.company.catchPhrase },
+          { label: 'Strategi Bisnis', value: user.company.bs },
+          { label: 'Tanggal Lahir', value: user.birthday || 'Tidak tersedia' },
+          { label: 'Jenis Kelamin', value: user.gender || 'Tidak tersedia' },
+          { label: 'LinkedIn', value: user.socialMedia?.linkedin || 'Tidak tersedia' },
+          { label: 'Twitter', value: user.socialMedia?.twitter || 'Tidak tersedia' },
+          { label: 'Deskripsi', value: user.bio || 'Tidak tersedia' },
+          { label: 'Negara', value: user.address.country || 'Tidak tersedia' },
+          { label: 'Provinsi', value: user.address.state || 'Tidak tersedia' },
+          { label: 'Latitude', value: user.address.geo?.lat || 'Tidak tersedia' },
+          { label: 'Longitude', value: user.address.geo?.lng || 'Tidak tersedia' }
+      ];
 
       details.forEach(detail => {
           const row = document.createElement('tr');
@@ -106,35 +106,30 @@ document.addEventListener('DOMContentLoaded', () => {
   // Search functionality
   searchButton.addEventListener('click', () => {
       const userId = searchInput.value.trim();
-      console.log('Searching for user ID:', userId); // Debugging line
       if (userId) {
-          // Filter user data based on the ID
           const user = originalData.find(user => user.id == userId);
           if (user) {
               displayData([user]);
-              displayUserDetails(user); // Show user details
-              fetchUserPosts(userId); // Fetch posts for the specified user ID
-              console.log('User found:', user); // Debugging line
+              displayUserDetails(user);
+              fetchUserPosts(userId);
           } else {
               tableBody.innerHTML = '<tr><td colspan="3">No user found with this ID.</td></tr>';
               postsList.innerHTML = '';
-              document.querySelector('#detail-body').innerHTML = ''; // Clear user details
-              console.log('No user found with ID:', userId); // Debugging line
+              document.querySelector('#detail-body').innerHTML = ''; 
           }
       } else {
-          // If no search input is provided, display all data again
           displayData(originalData);
           postsList.innerHTML = '';
-          document.querySelector('#detail-body').innerHTML = ''; // Clear user details
+          document.querySelector('#detail-body').innerHTML = '';
       }
   });
 
   // Clear search functionality
   clearButton.addEventListener('click', () => {
-      searchInput.value = ''; // Clear search input
-      displayData(originalData); // Show all data
-      postsList.innerHTML = ''; // Clear posts
-      document.querySelector('#detail-body').innerHTML = ''; // Clear user details
+      searchInput.value = '';
+      displayData(originalData);
+      postsList.innerHTML = '';
+      document.querySelector('#detail-body').innerHTML = '';
   });
 
   // Show loader
@@ -152,5 +147,5 @@ function displayError(message) {
   document.body.appendChild(errorElement);
   setTimeout(() => {
       errorElement.remove();
-  }, 3000); // Remove after 3 seconds
+  }, 3000);
 }
