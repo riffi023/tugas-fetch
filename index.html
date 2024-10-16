@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search User Data and Posts</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <video autoplay muted loop class="background-video">
+        <source src="hell.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+  <div class="container">
+    <h1 class="title">User Data</h1>
+    <div class="search-container">
+      <input type="number" id="search-input" placeholder="Search by User ID..." />
+      <button id="search-button">Search</button>
+      <button id="clear-button">Clear Search</button>
+    </div>
+    <div class="table-container">
+      <table id="data-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Data will be inserted here -->
+        </tbody>
+      </table>
+    </div>
+    <div class="posts-container">
+      <h2>User Posts</h2>
+      <ul id="posts-list">
+        <!-- Posts will be inserted here -->
+      </ul>
+    </div>
+  </div>
+
+  <div class="detail-container">
+    <h2>Detail Pengguna</h2>
+    <table id="detail-table">
+      <thead>
+        <tr>
+          <th>Detail</th>
+          <th>Informasi</th>
+        </tr>
+      </thead>
+      <tbody id="detail-body"></tbody>
+    </table>
+  </div>
+</div>
+
+  <script src="app.js"></script>
+</body>
+</html>
