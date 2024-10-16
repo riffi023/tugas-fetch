@@ -81,12 +81,17 @@ document.addEventListener('DOMContentLoaded', () => {
         { label: 'Perusahaan', value: user.company.name },
         { label: 'Slogan Perusahaan', value: user.company.catchPhrase },
         { label: 'Strategi Bisnis', value: user.company.bs },
-        { label: 'Tanggal Lahir', value: user.birthday || 'Tidak tersedia' }, // Birthday, if available
-        { label: 'Jenis Kelamin', value: user.gender || 'Tidak tersedia' }, // Gender, if available
-        { label: 'LinkedIn', value: user.socialMedia?.linkedin || 'Tidak tersedia' }, // LinkedIn, if available
-        { label: 'Twitter', value: user.socialMedia?.twitter || 'Tidak tersedia' }, // Twitter, if available
-        { label: 'Deskripsi', value: user.bio || 'Tidak tersedia' } // Bio, if available
+        { label: 'Tanggal Lahir', value: user.birthday || 'Tidak tersedia' },
+        { label: 'Jenis Kelamin', value: user.gender || 'Tidak tersedia' },
+        { label: 'LinkedIn', value: user.socialMedia?.linkedin || 'Tidak tersedia' },
+        { label: 'Twitter', value: user.socialMedia?.twitter || 'Tidak tersedia' },
+        { label: 'Deskripsi', value: user.bio || 'Tidak tersedia' },
+        { label: 'Negara', value: user.address.country || 'Tidak tersedia' }, // Country
+        { label: 'Provinsi', value: user.address.state || 'Tidak tersedia' }, // State
+        { label: 'Latitude', value: user.address.geo?.lat || 'Tidak tersedia' }, // Latitude
+        { label: 'Longitude', value: user.address.geo?.lng || 'Tidak tersedia' }  // Longitude
     ];
+    
     
     
     
