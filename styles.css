@@ -1,41 +1,50 @@
 html, body {
-    overflow: auto; /* Pastikan ini diatur ke auto */
-  }
+    overflow: auto; /* Ensure this is set to auto */
+}
 
 body {
     font-family: 'Arial', sans-serif;
-    color: #ffcc00; /* Kuning cerah */
+    color: #ffcc00; /* Bright yellow */
     margin: 0;
     padding: 20px;
-    position: relative; /* Agar video dan konten diatur secara benar */
-    overflow: auto; /* Mencegah scroll */
+    position: relative; /* So that video and content are positioned correctly */
+    overflow: auto; /* Prevent scrolling */
 }
 
 .background-video {
-    position: fixed; /* Mengatur posisi video */
+    position: fixed; /* Set video position */
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Memastikan video mengisi seluruh area */
-    z-index: -1; /* Agar video berada di belakang konten */
+    object-fit: cover; /* Ensure video fills entire area */
+    z-index: -1; /* So that video is behind content */
 }
 
 .container {
     max-width: 800px;
     margin: auto;
-    background: rgba(43, 43, 43, 0.9); /* Latar belakang dengan transparansi */
+    background: rgba(43, 43, 43, 0.9); /* Background with transparency */
     padding: 20px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     border-radius: 8px;
+    transition: transform 0.3s ease; /* Animation for the container */
 }
 
+.container:hover {
+    transform: scale(1.01); /* Slightly scale up on hover */
+}
 
 .title {
     text-align: center;
     margin-bottom: 20px;
     font-size: 24px;
-    color: #ff4500; /* Merah menyala */
+    color: #ff4500; /* Bright red */
+    transition: color 0.3s ease; /* Color change on hover */
+}
+
+.title:hover {
+    color: #f39c12; /* Change to orange on hover */
 }
 
 .table-container {
@@ -46,26 +55,36 @@ table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
+    transition: box-shadow 0.3s ease; /* Animation for table shadow */
+}
+
+table:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Increase shadow on hover */
 }
 
 th, td {
     padding: 12px 15px;
     text-align: left;
-    border: 1px solid #444; /* Gelap */
+    border: 1px solid #444; /* Dark */
+    transition: background-color 0.3s ease; /* Transition for background color */
 }
 
 th {
-    background-color: #c0392b; /* Merah gelap */
+    background-color: #c0392b; /* Dark red */
     color: #fff;
     cursor: pointer;
 }
 
+th:hover {
+    background-color: #e74c3c; /* Light red on hover */
+}
+
 tr:nth-child(even) {
-    background-color: #3d3d3d; /* Gelap */
+    background-color: #3d3d3d; /* Dark */
 }
 
 tr:hover {
-    background-color: #f39c12; /* Oranye */
+    background-color: #f39c12; /* Bright orange */
 }
 
 .search-container {
@@ -73,41 +92,51 @@ tr:hover {
     display: flex;
     gap: 10px;
     justify-content: center;
+    transition: opacity 0.3s ease; /* Fade effect for the search container */
 }
 
 #search-input {
     padding: 8px;
     width: 200px;
-    border: 1px solid #444; /* Gelap */
+    border: 1px solid #444; /* Dark */
     border-radius: 4px;
-    background-color: #333; /* Gelap */
-    color: #ffcc00; /* Kuning cerah */
+    background-color: #333; /* Dark */
+    color: #ffcc00; /* Bright yellow */
+    transition: border-color 0.3s ease; /* Transition for border color */
+}
+
+#search-input:focus {
+    border-color: #ff4500; /* Change border color on focus */
 }
 
 #search-button {
     padding: 8px 16px;
-    background-color: #c0392b; /* Merah gelap */
+    background-color: #c0392b; /* Dark red */
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition for hover */
 }
 
 #search-button:hover {
-    background-color: #ff4500; /* Merah menyala */
+    background-color: #ff4500; /* Bright red */
+    transform: scale(1.05); /* Scale up slightly on hover */
 }
 
 #clear-button {
     padding: 8px 16px;
-    background-color: #e74c3c; /* Merah terang */
+    background-color: #e74c3c; /* Bright red */
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transition for hover */
 }
 
 #clear-button:hover {
-    background-color: #c0392b; /* Merah gelap */
+    background-color: #c0392b; /* Dark red */
+    transform: scale(1.05); /* Scale up slightly on hover */
 }
 
 .posts-container {
@@ -116,7 +145,12 @@ tr:hover {
 
 .posts-container h2 {
     margin-bottom: 10px;
-    color: #ff4500; /* Merah menyala */
+    color: #ff4500; /* Bright red */
+    transition: color 0.3s ease; /* Color change on hover */
+}
+
+.posts-container h2:hover {
+    color: #f39c12; /* Change to orange on hover */
 }
 
 #posts-list {
@@ -125,12 +159,17 @@ tr:hover {
 }
 
 #posts-list li {
-    background: #444; /* Gelap */
+    background: #444; /* Dark */
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    color: #ffcc00; /* Kuning cerah */
+    color: #ffcc00; /* Bright yellow */
+    transition: transform 0.3s ease; /* Transition for list item */
+}
+
+#posts-list li:hover {
+    transform: translateY(-3px); /* Lift effect on hover */
 }
 
 .loader {
@@ -139,7 +178,7 @@ tr:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 24px;
-    color: #ff4500; /* Merah menyala */
+    color: #ff4500; /* Bright red */
     display: none; /* Hidden by default */
 }
 
@@ -151,6 +190,7 @@ tr:hover {
     border: 1px solid #f5c6cb;
     border-radius: 5px;
     text-align: center;
+    transition: opacity 0.3s ease; /* Fade effect for error message */
 }
 
 @media (max-width: 600px) {
@@ -178,6 +218,11 @@ tr:hover {
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease; /* Animation for detail container */
+}
+
+.detail-container:hover {
+    transform: scale(1.01); /* Slightly scale up on hover */
 }
 
 #detail-table {
@@ -190,11 +235,16 @@ tr:hover {
     text-align: left;
     border: 1px solid #444; /* Dark border */
     color: #ffcc00; /* Bright yellow text */
+    transition: background-color 0.3s ease; /* Transition for background color */
 }
 
 #detail-table th {
     background-color: #c0392b; /* Dark red header */
     color: #fff;
+}
+
+#detail-table th:hover {
+    background-color: #e74c3c; /* Light red on hover */
 }
 
 #detail-table tr:nth-child(even) {
@@ -203,4 +253,5 @@ tr:hover {
 
 #detail-table tr:hover {
     background-color: #f39c12; /* Bright orange on hover */
+    transform: scale(1.01); /* Slightly scale up on hover */
 }
